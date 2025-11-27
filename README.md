@@ -1,6 +1,8 @@
 # Richouse
 
-**Description:** Developed 2D top-down stealth game in Python/Pygame using an OOP architecture. Implemented Flask API for storing usernames and global ranking, with POST and GET methods. Created and handled JSON file and SQLite databases, for local and server information respectively. Gained experience following a structured life cycle for projects by using an agile methodology.
+**Description:** Developed a trivia website using JavaScript and HTML/CSS in the front-end.
+Created a Flask back-end using Jinja templates to make the website dynamic.
+Used hashlib library in Python to store the passwords safely into the server SQLite database.
 
 **Technologies:** HTML/CSS, JavaScript, Python 3, Flask, SQLite 3
 
