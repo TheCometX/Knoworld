@@ -1,0 +1,21 @@
+td, th {
+    padding: 10px;
+}
+
+#menu{
+    display: flex;
+    column-gap: 30px;
+}
+
+#rank {
+    width: 70%;
+    height: 70%;
+}
+
+
+#results {
+    width: 450px;
+    height: 150px;
+    border-radius: 4px;
+}
+

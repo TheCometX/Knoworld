@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <form class="d-flex flex-column" id="questions" action="/SubmitQuestions" method="POST">
+        <script>
+            corrects = 0;
+
+            function updateValue() {
+                document.querySelector('#Counter').value = corrects;
+            }
+        </script>
+        {% for question in questions %}
+            <div style="margin-top: 3%; padding: 4%;" class="container-xl border border-primary rounded">
+                <h6>{{ question[1] }}</h6>
+                <div style="margin-top: 5%;" id="{{ question[0] }}">
+                    {% for option in question[2] %}
+                        <button class="btn btn-primary" type="Button" value="{{ option }}">{{ option }}</button>
+                    {% endfor %}
+                </div>
+                <script>
+                    for (let x = 0; x < document.querySelector('#{{ question[0] }}').querySelectorAll('button').length; x++) {
+                        document.querySelector('#{{ question[0] }}').querySelectorAll('button')[x].onclick = function() {
+                            for (let y = 0; y < document.querySelector('#{{ question[0] }}').querySelectorAll('button').length; y++) {
+                                if (document.querySelector('#{{ question[0] }}').querySelectorAll('button')[y].value == "{{ question[3] }}" && document.querySelector('#{{ question[0] }}').querySelectorAll('button')[y].className == 'btn btn-outline-primary') {
+                                    window.corrects--;
+                                    updateValue();
+                                }
+                                document.querySelector('#{{ question[0] }}').querySelectorAll('button')[y].className = 'btn btn-primary';
+                            }
+
+                            if (document.querySelector('#{{ question[0] }}').querySelectorAll('button')[x].className == 'btn btn-primary') {
+                                document.querySelector('#{{ question[0] }}').querySelectorAll('button')[x].className = 'btn btn-outline-primary';
+
+                                if (document.querySelector('#{{ question[0] }}').querySelectorAll('button')[x].value == "{{ question[3] }}") {
+                                    window.corrects++;
+                                    updateValue();
+                                }
+                            }
+                        }
+                    }
+                </script>
+            </div>
+        {% endfor %}
+        <div style="margin: 3%;" class="d-flex flex-column justify-content-center">
+            <input type="hidden" value="0" name="correctCount" id="Counter">
+            <button class="btn-primary" type="Submit">Submit</button>
+        </div>
+    </form>
+{% endblock %}

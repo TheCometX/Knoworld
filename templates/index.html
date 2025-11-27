@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <img src="{{ url_for('static', filename='Logo.png') }}" alt="Logo">
+    <div id="menu">
+        <button style="width: 250px;" class="btn btn-primary" onclick="window.location.href = '/login' ; ">Login</button>
+        <button style="width: 250px;" class="btn btn-primary" onclick="window.location.href = '/test' ; ">Test</button>
+        <button style="width: 250px;" class="btn btn-primary" onclick="window.location.href = '/rank' ; ">Rank</button>
+    </div>
+    
+    <div class="container-xxl">
+        <table id="results" class="table-primary table-borderless">
+            <thead>
+                <tr>
+                    <th class="text-lg">{{ username }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Last score</td>
+                    <td>{{ lastScore }}</td>
+                </tr>
+                <tr>
+                    <td>Highest score</td>
+                    <td>{{ highestScore }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
